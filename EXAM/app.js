@@ -4,16 +4,23 @@ const form = document.querySelector('#form');
 const section = document.querySelector('.items');
 const formSubmit = document.querySelector('.form-submit');
 const imageURL = document.querySelector('#image');
-const arr = [];
+const btnSection = document.querySelector('.buttons');
+let child = section.children;
 
 form.addEventListener('submit', (e) => {
     e.preventDefault();
 });
 
 formSubmit.addEventListener('click', (e) => {
+
     console.log(imageURL.value);
+
     // console.log(e.target.previousElementSibling.value);
     // console.log(e.target.previousElementSibling.previousElementSibling.previousElementSibling.value);
+    if(imageURL.value == '') {
+        return ;
+    }
+
     if (e.target.previousElementSibling.value == 'headphone') {
         const newItem = document.createElement('div');
         newItem.setAttribute('class', 'item');
@@ -25,8 +32,11 @@ formSubmit.addEventListener('click', (e) => {
         newItem.innerHTML = newHTML;
         section.append(newItem);
         arr.push(newItem);
+        console.log(child);
         e.target.previousElementSibling.previousElementSibling.previousElementSibling.value = '';
-    } else if (e.target.previousElementSibling.value == 'mobile') {
+    } 
+
+    else if (e.target.previousElementSibling.value == 'mobile') {
         const newItem = document.createElement('div');
         newItem.setAttribute('class', 'item');
         newItem.classList.add('mobile');
@@ -37,8 +47,10 @@ formSubmit.addEventListener('click', (e) => {
         newItem.innerHTML = newHTML;
         section.append(newItem);
         arr.push(newItem);
+        console.log(child);
         e.target.previousElementSibling.previousElementSibling.previousElementSibling.value = '';
-    } else if (e.target.previousElementSibling.value == 'laptop') {
+    } 
+    else if (e.target.previousElementSibling.value == 'laptop') {
         const newItem = document.createElement('div');
         newItem.setAttribute('class', 'item');
         newItem.classList.add('laptop');
@@ -49,6 +61,7 @@ formSubmit.addEventListener('click', (e) => {
         newItem.innerHTML = newHTML;
         section.append(newItem);
         arr.push(newItem);
+        console.log(child);
         e.target.previousElementSibling.previousElementSibling.previousElementSibling.value = '';
     }
 });
@@ -58,61 +71,68 @@ section.addEventListener('click', (e) => {
     const parent = target.parentElement;
     // console.log(parent);
     parent.remove();
+    console.log(child);
 });
 
-const section2 = document.querySelector('.buttons');
-let child = section.childNodes;
-console.log(child);
-
-// section2.addEventListener('click', (e) => {
-//     console.log(e.target);
-//     console.log(child);
-//     if (e.target.classList.contains('all')) {
-//         child.forEach((element) => {
-//             element.style.display = 'flex';
-//         })
-//         // console.log("all")
-//     }
-//     if (e.target.classList.contains('headphone')) {
-//         // child.forEach((element) => {
-//         //     if(element.classList.contains('headphone')) {
-//         //         element.style.display = 'flex' ;
-//         //     } else {
-//         //         element.style.display = 'none' ;
-//         //     }
-//         // })
-//         for (let val of child) {
-//             if (element.classList.contains('headphone')) {
-//                 if (val.classList.contains('headphone')) {
-//                     val.style.display = 'flex';
-//                 } else {
-//                     val.style.display = 'none';
-//                 }
-//             }
-
-//         }
-//         if (e.target.classList.contains('laptop')) {
-//             child.forEach((element) => {
-//                 if (element.classList.contains('laptop')) {
-//                     element.style.display = 'flex';
-//                 } else {
-//                     element.style.display = 'none';
-//                 }
-//             })
-//         }
-//         if (e.target.classList.contains('mobile')) {
-//             child.forEach((element) => {
-//                 if (element.classList.contains('mobile')) {
-//                     element.style.display = 'flex';
-//                 } else {
-//                     element.style.display = 'none';
-//                 }
-//             })
-//         }
-//     });
+btnSection.addEventListener('click', (e) => {
+    if (e.target.textContent == 'All') {
+        for (let i = 0; i < child.length; i++) {
+            child[i].style.display = 'flex';
+            console.log(child[i]);
+        }
+    }
+    else if (e.target.textContent == 'Headphones') {
+        for (let i = 0; i < child.length; i++) {
+            if (child[i].classList.contains('headphone')) {
+                child[i].style.display = 'flex';
+                console.log(child[i]);
+            } else {
+                child[i].style.display = 'none';
+                console.log(child[i]);
+            }
+        }
+    }
+    else if(e.target.textContent == 'Laptops') {
+        for (let i = 0; i < child.length; i++) {
+            if (child[i].classList.contains('laptop')) {
+                child[i].style.display = 'flex';
+                console.log(child[i]);
+            } else {
+                child[i].style.display = 'none';
+                console.log(child[i]);
+            }
+        }
+    }
+    else if(e.target.textContent == 'Mobile') {
+        for (let i = 0; i < child.length; i++) {
+            if (child[i].classList.contains('mobile')) {
+                child[i].style.display = 'flex';
+                console.log(child[i]);
+            } else {
+                child[i].style.display = 'none';
+                console.log(child[i]);
+            }
+        }
+    }
+})
 
 
-// console.log(child);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 
